@@ -1,0 +1,2 @@
+﻿-keep class com.sentinel.nomedia.detector.** { *; }
+-keep class com.sentinel.nomedia.service.** { *; }

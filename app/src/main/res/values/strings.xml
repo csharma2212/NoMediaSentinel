@@ -1,0 +1,6 @@
+﻿<resources>
+    <string name="app_name">NoMedia Sentinel</string>
+    <string name="channel_id">nomedia_watchdog</string>
+    <string name="channel_name">Storage Watchdog Active</string>
+    <string name="channel_desc">Monitors media directories against rogue .nomedia creation.</string>
+</resources>
