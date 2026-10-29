@@ -1,91 +1,76 @@
-﻿$xmlPath = "app\src\main\res\layout\activity_main.xml"
-
-$xmlContent = @"
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#F8F9FA">
 
     <TextView
-        android:id="@+id/tvHeader"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NoMedia Sentinel &amp; Culprit Tracer"
-        android:textSize="20sp"
+        android:text="NoMedia Sentinel"
+        android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="#212529"
+        android:paddingBottom="4dp" />
 
     <TextView
         android:id="@+id/tvStatus"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Service Status: Inactive"
-        android:textColor="#D32F2F"
+        android:text="Status: Ready to Protect"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvHeader" />
+        android:textColor="#495057"
+        android:paddingBottom="20dp" />
 
     <Button
         android:id="@+id/btnPermissions"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Grant Storage &amp; Usage Permissions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvStatus" />
-
-    <Button
-        android:id="@+id/btnToggleWatchdog"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Start Watchdog Daemon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnPermissions" />
+        android:text="Grant Storage Permissions"
+        android:layout_marginBottom="10dp" />
 
     <Button
         android:id="@+id/btnSweep"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="CLEAN &amp; SECURE NOW"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:id="@+id/btnToggleWatchdog"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Run Immediate Manual Sweep"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnToggleWatchdog" />
+        android:text="Start Background Guard"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Audit &amp; Culprit Log:"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#212529"
+        android:paddingBottom="6dp" />
 
     <ScrollView
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:background="#F5F5F5"
-        android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSweep">
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:padding="12dp">
 
         <TextView
             android:id="@+id/tvAuditLogs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="System idle. Tap 'Clean &amp; Secure Now' to audit media folders."
             android:fontFamily="monospace"
-            android:text="Audit log initialized..."
-            android:textColor="#212121"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:textColor="#343A40" />
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-"@
-
-# Write using UTF8 without BOM
-$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
-[System.IO.File]::WriteAllText((Join-Path (Get-Location) $xmlPath), $xmlContent, $utf8NoBom)
-Write-Host "Re-generated $xmlPath successfully." -ForegroundColor Green
+</LinearLayout>

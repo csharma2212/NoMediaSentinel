@@ -1,4 +1,4 @@
-﻿import java.util.Properties
+import java.util.Properties
 import java.io.FileInputStream
 
 plugins {
@@ -20,6 +20,14 @@ val mSdk = (versionProps["MIN_SDK"] as? String)?.toInt() ?: 29
 val tSdk = (versionProps["TARGET_SDK"] as? String)?.toInt() ?: 35
 
 android {
+    signingConfigs {
+        create("release") {
+            storeFile = file("C:/Users/cshar/OneDrive/Documents/KushApp/NoMediaSentinel/release-key.jks")
+            storePassword = "sentinel123"
+            keyAlias = "sentinel_key"
+            keyPassword = "sentinel123"
+        }
+    }
     namespace = "com.sentinel.nomedia"
     compileSdk = cSdk
 
@@ -34,6 +42,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
@@ -55,6 +64,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = false
     }
 }
 
