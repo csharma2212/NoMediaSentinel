@@ -1,4 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿$xmlPath = "app\src\main\res\layout\activity_main.xml"
+
+$xmlContent = @"
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -12,9 +15,9 @@
         android:text="NoMedia Sentinel &amp; Culprit Tracer"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvStatus"
@@ -24,9 +27,9 @@
         android:text="Service Status: Inactive"
         android:textColor="#D32F2F"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/tvHeader"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvHeader" />
 
     <Button
         android:id="@+id/btnPermissions"
@@ -34,9 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Grant Storage &amp; Usage Permissions"
-        app:layout_constraintTop_toBottomOf="@id/tvStatus"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvStatus" />
 
     <Button
         android:id="@+id/btnToggleWatchdog"
@@ -44,9 +47,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Start Watchdog Daemon"
-        app:layout_constraintTop_toBottomOf="@id/btnPermissions"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btnPermissions" />
 
     <Button
         android:id="@+id/btnSweep"
@@ -54,9 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Run Immediate Manual Sweep"
-        app:layout_constraintTop_toBottomOf="@id/btnToggleWatchdog"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btnToggleWatchdog" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -64,10 +67,10 @@
         android:layout_marginTop="16dp"
         android:background="#F5F5F5"
         android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@id/btnSweep"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/btnSweep">
 
         <TextView
             android:id="@+id/tvAuditLogs"
@@ -78,4 +81,11 @@
             android:textColor="#212121"
             android:textSize="12sp" />
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+"@
+
+# Write using UTF8 without BOM
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText((Join-Path (Get-Location) $xmlPath), $xmlContent, $utf8NoBom)
+Write-Host "Re-generated $xmlPath successfully." -ForegroundColor Green
