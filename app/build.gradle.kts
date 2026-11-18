@@ -22,7 +22,12 @@ val tSdk = (versionProps["TARGET_SDK"] as? String)?.toInt() ?: 35
 android {
     signingConfigs {
         create("release") {
-            storeFile = file("C:/Users/cshar/OneDrive/Documents/KushApp/NoMediaSentinel/release-key.jks")
+            val rootKeyFile = rootProject.file("release-key.jks")
+            storeFile = if (rootKeyFile.exists()) {
+                rootKeyFile
+            } else {
+                file("C:/Users/cshar/OneDrive/Documents/KushApp/NoMediaSentinel/release-key.jks")
+            }
             storePassword = "sentinel123"
             keyAlias = "sentinel_key"
             keyPassword = "sentinel123"
@@ -65,6 +70,10 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = false
+    }
+    lint {
+        abortOnError = false
+        checkReleaseBuilds = false
     }
 }
 

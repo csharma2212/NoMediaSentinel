@@ -1,2 +1,6 @@
-﻿-keep class com.sentinel.nomedia.detector.** { *; }
+-keep class com.sentinel.nomedia.detector.** { *; }
 -keep class com.sentinel.nomedia.service.** { *; }
+-keep class com.sentinel.nomedia.remediation.** { *; }
+-keep class com.sentinel.nomedia.intelligence.** { *; }
+-keep class com.sentinel.nomedia.receiver.** { *; }
+-keep class com.sentinel.nomedia.ui.** { *; }
